@@ -1,0 +1,10 @@
+-- Stored procedure to get a patient's full medical history
+DELIMITER //
+CREATE PROCEDURE GetMedicalHistory(IN pid INT)
+BEGIN
+    SELECT * FROM Appointments WHERE patient_id = pid;
+    SELECT * FROM Medications WHERE patient_id = pid;
+END //
+DELIMITER ;
+--To use the stored procedure:
+CALL GetMedicalHistory(1);
