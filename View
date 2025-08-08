@@ -1,0 +1,10 @@
+-- View for upcoming appointments
+CREATE VIEW UpcomingAppointments AS
+SELECT 
+    A.appointment_id, P.name AS patient_name, D.name AS doctor_name, A.appointment_date
+FROM 
+    Appointments A
+JOIN Patients P ON A.patient_id = P.patient_id
+JOIN Doctors D ON A.doctor_id = D.doctor_id
+WHERE 
+    A.appointment_date >= CURDATE();
