@@ -1,0 +1,16 @@
+-- List all appointments with patient and doctor names
+SELECT 
+    A.appointment_id, P.name AS patient_name, D.name AS doctor_name, A.appointment_date, A.diagnosis
+FROM 
+    Appointments A
+JOIN Patients P ON A.patient_id = P.patient_id
+JOIN Doctors D ON A.doctor_id = D.doctor_id;
+
+-- Get all medications for a specific patient
+SELECT 
+    P.name AS patient_name, M.medicine_name, M.dosage
+FROM 
+    Medications M
+JOIN Patients P ON M.patient_id = P.patient_id
+WHERE 
+    P.name = 'Rahul Sharma';
